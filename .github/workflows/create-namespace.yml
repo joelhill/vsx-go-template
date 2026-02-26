@@ -1,0 +1,18 @@
+name: Create Open VSX Namespace
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-namespace:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Create namespace joelhill
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        run: npx ovsx create-namespace joelhill -p $OVSX_PAT
