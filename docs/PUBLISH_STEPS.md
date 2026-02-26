@@ -1,41 +1,53 @@
-# Publish Steps (Phase 5)
+# Publish Runbook
 
-After completing [Open VSX setup](OPEN_VSX_SETUP.md) and the repository changes, run these steps to publish.
+Runbook for publishing new versions of the Go Template extension to Open VSX.
 
-## Pre-publish verification
+**Prerequisites:** [Open VSX setup](OPEN_VSX_SETUP.md) must be completed once (Eclipse account, Publisher Agreement, token, namespace).
 
-1. Confirm `publisher` in `package.json` is `joelhill`.
-2. Confirm no remaining `romantomjak` links in user-facing metadata (except fork attribution in CHANGELOG).
-3. Run `npm run check:manifest`.
-4. (Optional) Run `npm run package` to build a `.vsix` and smoke-test in Cursor.
+---
 
-## Publish
+## Option A: Publish via GitHub Release (recommended)
 
-From the project root:
+1. Update `CHANGELOG.md` with the new version and changes.
+2. Bump version in `package.json`: `npm version patch` (or `minor` / `major`).
+3. Commit and push to `main`.
+4. Create a GitHub release:
+   - **Releases** → **Draft a new release**
+   - Tag: `v0.0.x` (match `package.json` version)
+   - Title: `Go Template 0.0.x - Open VSX` (or similar)
+   - Paste release notes from CHANGELOG
+   - **Publish release**
+5. The **Publish to Open VSX** workflow runs automatically. Check **Actions** for success.
 
-```powershell
-# Set your token (or pass via -p)
-$env:OVSX_PAT = "your-open-vsx-token"
+---
 
-# Publish
-npx ovsx publish -p $env:OVSX_PAT
-```
+## Option B: Publish via CLI (Windows users may hit ovsx native binding errors)
 
-Or with inline token:
+1. Update `CHANGELOG.md` and bump version: `npm version patch`.
+2. Run `npm run check:manifest`.
+3. From project root:
+   ```powershell
+   $env:OVSX_PAT = "your-token"
+   npx ovsx publish -p $env:OVSX_PAT
+   ```
+4. If `ovsx` fails on Windows, use Option A instead.
 
-```powershell
-npx ovsx publish -p "your-open-vsx-token"
-```
+---
 
-## Post-publish validation
+## Post-publish verification
 
-1. **Open VSX listing**: Visit https://open-vsx.org/extension/joelhill/go-template and verify metadata.
-2. **Cursor install**: In Cursor, open Extensions (Ctrl+Shift+X), search for "Go Template" or `joelhill.go-template`, and install.
-3. **CLI install** (optional): `cursor --install-extension joelhill.go-template`
+1. **Open VSX**: https://open-vsx.org/extension/joelhill/go-template — confirm new version and metadata.
+2. **Cursor install**: Search may lag; install by ID or from VSIX:
+   - `cursor --install-extension joelhill.go-template` (if indexed)
+   - Or build and install locally: `npm run package` then `cursor --install-extension ./go-template-0.0.x.vsix`
 
-## Definition of done
+---
 
-- [ ] Open VSX page exists for `joelhill.go-template` with correct metadata and links
-- [ ] Namespace is contributor-ready (and ideally owner-verified)
-- [ ] README and changelog reflect fork ownership and Open VSX process
-- [ ] Cursor can install the extension by ID
+## Troubleshooting
+
+| Issue | Action |
+|-------|--------|
+| `ovsx` "Failed to load native binding" on Windows | Use GitHub Release (Option A) or run from Linux/WSL. |
+| Extension not found in Cursor search | Install from VSIX: `npm run package` → `cursor --install-extension ./go-template-0.0.x.vsix` |
+| Publish workflow fails | Ensure `OVSX_PAT` is set in repo **Settings → Secrets → Actions**. |
+| Version already exists | Bump version in `package.json` and try again. |

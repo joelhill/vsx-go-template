@@ -7,10 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-### Added
-
-- Fork published to Open VSX for Cursor installability (`joelhill.go-template`)
-
 ## [0.0.3] - 2025-02-25
 
 ### Added

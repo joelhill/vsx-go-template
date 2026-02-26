@@ -1,8 +1,14 @@
 # Go template syntax highlighting
 
-[Open VSX extension](https://open-vsx.org/extension/joelhill/go-template) (`joelhill.go-template`) to add syntax highlighting for [Go template files](https://pkg.go.dev/text/template). Install in Cursor via Extensions (Ctrl+Shift+X) by searching for "Go Template" or `joelhill.go-template`.
+[Open VSX extension](https://open-vsx.org/extension/joelhill/go-template) (`joelhill.go-template`) to add syntax highlighting for [Go template files](https://pkg.go.dev/text/template).
 
 Fork of [romantomjak/vscode-go-template](https://github.com/romantomjak/vscode-go-template) for Open VSX / Cursor compatibility. Original extension by Roman Tomjak.
+
+### Installation (Cursor / VS Code)
+
+- **Extensions panel** (Ctrl+Shift+X): Search for "Go Template" or `joelhill.go-template`.
+- **CLI**: `cursor --install-extension joelhill.go-template` (or `code` for VS Code).
+- **If not found in search**: Build and install from source: `npm run package` then `cursor --install-extension ./go-template-0.0.3.vsix` (adjust version as needed).
 
 ## Features
 
@@ -32,16 +38,7 @@ If you wish to work on an existing issue, please leave a comment saying so, as s
 
 ## Publishing to Open VSX
 
-1. Complete [Open VSX setup](docs/OPEN_VSX_SETUP.md) (Eclipse account, Publisher Agreement, token, namespace).
-2. Update `CHANGELOG.md` with new changes.
-3. Bump version: `npm version patch` (or `minor`/`major`).
-4. Validate: `npm run check:manifest`
-5. Package (optional): `npm run package` to build a `.vsix` locally.
-6. Publish: `npm run publish:ovsx` (requires `OVSX_PAT` env var or `-p <token>`).
-
-Optional: Add `OVSX_PAT` as a GitHub secret and use the [publish workflow](.github/workflows/publish-open-vsx.yml) on release creation.
-
-See [docs/PUBLISH_STEPS.md](docs/PUBLISH_STEPS.md) for the full publish checklist.
+See [docs/PUBLISH_STEPS.md](docs/PUBLISH_STEPS.md) for the publish runbook. One-time setup: [docs/OPEN_VSX_SETUP.md](docs/OPEN_VSX_SETUP.md).
 
 ## License
 
