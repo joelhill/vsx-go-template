@@ -1,6 +1,6 @@
 # Open VSX Account and Namespace Setup
 
-Complete these steps before publishing the extension to Open VSX.
+One-time setup for publishing to Open VSX. Complete these steps before the first publish.
 
 ## 1. Create an Eclipse account
 
@@ -20,7 +20,7 @@ Register at [accounts.eclipse.org](https://accounts.eclipse.org/user/register). 
 3. Copy the token and store it securely (e.g. `OVSX_PAT` environment variable).
 4. The token is never shown again after you close the dialog.
 
-## 4. Create the namespace
+## 4. Create the namespace (one-time per publisher)
 
 ### Option A: Via GitHub Action (recommended on Windows)
 
