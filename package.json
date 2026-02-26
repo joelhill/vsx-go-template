@@ -2,19 +2,19 @@
   "name": "go-template",
   "displayName": "Go Template",
   "description": "Syntax highlighting for Go template files",
-  "version": "0.0.2",
-  "homepage": "https://github.com/romantomjak/vscode-go-template/blob/main/README.md",
+  "version": "0.0.3",
+  "homepage": "https://github.com/joelhill/vsx-go-template/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/romantomjak/vscode-go-template"
+    "url": "https://github.com/joelhill/vsx-go-template"
   },
   "bugs": {
-    "url": "https://github.com/romantomjak/vscode-go-template/issues"
+    "url": "https://github.com/joelhill/vsx-go-template/issues"
   },
   "author": {
-    "name": "Roman Tomjak"
+    "name": "Joel Hill"
   },
-  "publisher": "romantomjak",
+  "publisher": "joelhill",
   "license": "MIT",
   "engines": {
     "vscode": "^1.97.0"
@@ -34,6 +34,12 @@
     "highlighting",
     "golang"
   ],
+  "scripts": {
+    "package": "npx vsce package",
+    "package:vsix": "npx vsce package",
+    "publish:ovsx": "npx ovsx publish",
+    "check:manifest": "node scripts/check-manifest.js"
+  },
   "contributes": {
     "languages": [
       {
