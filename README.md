@@ -2,6 +2,8 @@
 
 [Open VSX extension](https://open-vsx.org/extension/joelhill/go-template) (`joelhill.go-template`) to add syntax highlighting for [Go template files](https://pkg.go.dev/text/template). Install in Cursor via Extensions (Ctrl+Shift+X) by searching for "Go Template" or `joelhill.go-template`.
 
+Fork of [romantomjak/vscode-go-template](https://github.com/romantomjak/vscode-go-template) for Open VSX / Cursor compatibility. Original extension by Roman Tomjak.
+
 ## Features
 
 - Multiple supported file extensions - `*.tmpl`, `*.gohtml` and `*.tpl`
